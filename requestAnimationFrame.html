@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>requestAnimationFrame</title>
+        <style>
+            .processBar {
+                margin-top: 30px;
+                height: 100px;
+                background: orange;
+                width: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick='start()'>开始</button>
+        <div class='processBar'></div>
+        <script>
+            const ele = document.getElementsByClassName('processBar')[0]
+
+            function start () {
+                ele.style.width = '0'
+                requestAnimationFrame(increase)                
+            }
+
+            function increase () {
+                const eleWidth = parseInt(ele.style.width)
+                if(eleWidth < 1000){
+                    ele.style.width = eleWidth + 10 + 'px'
+                    requestAnimationFrame(increase)
+                }
+            }            
+        </script>
+    </body>
+</html>
